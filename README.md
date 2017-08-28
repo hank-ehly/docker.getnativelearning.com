@@ -1,6 +1,7 @@
 # docker.getnativelearning.com
 
 ```bash
-./setup.sh
+make
+cd {,api.,admin.}getnativelearning.com && git fetch origin develop:develop && cd ..
 docker-compose up --build
 ```
