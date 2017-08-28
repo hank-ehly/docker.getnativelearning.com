@@ -1,0 +1,34 @@
+version: '3'
+services:
+  web:
+    build: getnativelearning.com
+    ports:
+      - '5555:5555'
+    volumes:
+      - ./getnativelearning.com:/var/www/getnativelearning.com
+  admin_web:
+    build: admin.getnativelearning.com
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./admin.getnativelearning.com:/var/www/admin.getnativelearning.com
+  api:
+    build: api.getnativelearning.com
+    ports:
+      - '1080:1080'
+      - '3000:3000'
+    volumes:
+      - ./api.getnativelearning.com:/var/www/api.getnativelearning.com
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7.19
+    command: mysqld --max_allowed_packet=671088640
+    environment:
+      MYSQL_DATABASE: 'getnative_development'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_USER: 'getnative'
+      MYSQL_PASSWORD: 'getnative'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - '3307:3306'
