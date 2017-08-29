@@ -1,4 +1,4 @@
 main:
 	./lib/setup.sh
-clean:
-	rm -rf ./{,api.,admin.}getnativelearning.com
+#clean:
+#	rm -rf ./{,api.,admin.}getnativelearning.com
